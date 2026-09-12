@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
 
     database_url: str
-    test_database_url: str
+    test_database_url: str | None = None
 
     openai_api_key: str | None = None
     vapi_api_key: str | None = None
