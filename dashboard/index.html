@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Registration Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 20px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header p {
+            margin: 6px 0 0;
+            color: #d1d5db;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .button-row {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f9fafb;
+        }
+
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .message {
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .message.success {
+            background: #dcfce7;
+            color: #166534;
+            display: block;
+        }
+
+        .message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 800px) {
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Patient Registration Dashboard</h1>
+    <p>Voice AI Patient Registration System</p>
+</header>
+
+<main>
+
+    <div id="message" class="message"></div>
+
+    <section class="card">
+        <h2>Search Patients</h2>
+
+        <div class="filters">
+
+            <div>
+                <label for="lastName">Last Name</label>
+                <input
+                    type="text"
+                    id="lastName"
+                    placeholder="e.g. Smith"
+                >
+            </div>
+
+            <div>
+                <label for="dateOfBirth">Date of Birth</label>
+                <input
+                    type="date"
+                    id="dateOfBirth"
+                >
+            </div>
+
+            <div>
+                <label for="phoneNumber">Phone Number</label>
+                <input
+                    type="text"
+                    id="phoneNumber"
+                    placeholder="e.g. 415-555-1234"
+                >
+            </div>
+
+        </div>
+
+        <div class="button-row">
+            <button
+                class="primary"
+                onclick="loadPatients()"
+            >
+                Search
+            </button>
+
+            <button
+                class="secondary"
+                onclick="clearFilters()"
+            >
+                Clear
+            </button>
+
+            <button
+                class="secondary"
+                onclick="loadPatients()"
+            >
+                Refresh
+            </button>
+        </div>
+    </section>
+
+
+    <section class="card">
+
+        <h2>Registered Patients</h2>
+
+        <div id="patientTableContainer">
+            <div class="empty">
+                Loading patients...
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="/dashboard/app.js"></script>
+
+</body>
+</html>
