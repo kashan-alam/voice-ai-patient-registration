@@ -14,6 +14,7 @@ class Settings(BaseSettings):
 
     openai_api_key: str | None = None
     vapi_api_key: str | None = None
+    vapi_tool_secret: str | None = None
 
     model_config = SettingsConfigDict(
         env_file=".env",

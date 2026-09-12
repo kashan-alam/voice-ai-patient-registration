@@ -6,6 +6,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.api.patients import router as patients_router
+from app.api.vapi import router as vapi_router
 from app.core.config import settings
 from app.core.exceptions import (
     general_exception_handler,
@@ -45,7 +46,7 @@ app.add_exception_handler(
 
 # Register API routes.
 app.include_router(patients_router)
-
+app.include_router(vapi_router)
 
 # Serve dashboard JavaScript and other static files.
 dashboard_path = Path(__file__).resolve().parent.parent / "dashboard"
